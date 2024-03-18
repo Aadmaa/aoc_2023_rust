@@ -3,7 +3,7 @@ use std::fs::File;
 use std::io::BufReader;
 
 mod part1;
-// mod part2;
+mod part2;
 mod shared;
 
 /// Day 06
@@ -19,7 +19,7 @@ pub fn run_d6(args: Args) -> Result<u64, String> {
 
     match args.part {
         ProblemPart::A => part1::d6(reader),
-        ProblemPart::B => todo!(), // part2::d6_b(reader),
+        ProblemPart::B => part2::d6_b(reader),
     }
 }
 
@@ -50,4 +50,27 @@ mod tests {
     
         assert_eq!(result, Ok(840336));
     }
+
+    #[test]
+    fn test_d6_b() {
+        let result = run_d6(Args::new(
+            ProblemNumber::D6, 
+            ProblemPart::B, 
+            "data/d06/sample.txt"
+        ));
+    
+        assert_eq!(result, Ok(71503));
+    }
+
+    #[test]
+    fn test_d6_b_solved() {
+        let result = run_d6(Args::new(
+            ProblemNumber::D6, 
+            ProblemPart::B, 
+            "data/d06/main.txt"
+        ));
+    
+        assert_eq!(result, Ok(41382569));
+    }
+    
 }
